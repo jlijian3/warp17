@@ -225,16 +225,16 @@ bool rpc_init(void)
         return false;
     }
 
-    /* protobuf_c_dispatch_default is a singleton but let's make sure we
+    /* protobuf_c_rpc_dispatch_default is a singleton but let's make sure we
      * can initialize it!
      */
-    if (!protobuf_c_dispatch_default())
+    if (!protobuf_c_rpc_dispatch_default())
         return false;
 
     rpc_server = protobuf_c_rpc_server_new(PROTOBUF_C_RPC_ADDRESS_TCP,
                                            TPG_RPC_TCP_PORT,
                                            (ProtobufCService *) &tpg_service,
-                                           protobuf_c_dispatch_default());
+                                           protobuf_c_rpc_dispatch_default());
     if (!rpc_server)
         return false;
 
@@ -249,12 +249,7 @@ void rpc_dispatch(void)
     /* No timeout option for running protobuf server in a non-blocking mode.
      * So we do this hack..
      */
-    void empty(ProtobufCDispatch *d __rte_unused, void *arg __rte_unused) {}
-
-    protobuf_c_dispatch_add_idle(protobuf_c_dispatch_default(),
-                                 empty,
-                                 NULL);
-    protobuf_c_dispatch_run(protobuf_c_dispatch_default());
+    protobuf_c_rpc_dispatch_run(protobuf_c_rpc_dispatch_default());
 }
 
 /*****************************************************************************

@@ -166,7 +166,7 @@ CFLAGS += -DTPG_KNI_IF -DTPG_SW_CHECKSUMMING
 endif
 
 LDFLAGS += -lncurses
-LDFLAGS += -lprotobuf-c
+LDFLAGS += -lprotobuf-c -lprotobuf-c-rpc
 
 include $(RTE_SDK)/mk/rte.extapp.mk
 
