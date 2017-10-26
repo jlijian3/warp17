@@ -249,6 +249,10 @@ void rpc_dispatch(void)
     /* No timeout option for running protobuf server in a non-blocking mode.
      * So we do this hack..
      */
+    void empty(ProtobufCRPCDispatch *d __rte_unused, void *arg __rte_unused) {}
+    protobuf_c_rpc_dispatch_add_idle(protobuf_c_rpc_dispatch_default(),
+                                 empty,
+                                NULL);
     protobuf_c_rpc_dispatch_run(protobuf_c_rpc_dispatch_default());
 }
 

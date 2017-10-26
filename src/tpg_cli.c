@@ -380,7 +380,7 @@ void cli_interact(void)
         rte_timer_manage();
 
         /* Check for RPC events too. */
-        //rpc_dispatch();
+        rpc_dispatch();
 
         ret = poll(&fds, 1, 1);
 
