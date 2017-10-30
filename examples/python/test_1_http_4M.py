@@ -173,7 +173,7 @@ def configure_client_port():
     if err.e_code != 0:
         die('Error configuring client test case.')
 
-    print 'Clients configured successfully!\n'
+    print("Clients configured successfully!\n")
 
 def configure_server_port():
     # Configure 1 server IP interface and no default gateway on port 1.
@@ -219,7 +219,7 @@ def configure_server_port():
     if err.e_code != 0:
         die('Error configuring server test case.')
 
-    print 'Servers configured successfully!\n'
+    print( 'Servers configured successfully!\n')
 
 def start_client_port():
     err = warp17_method_call(warp17_host, warp17_port, Warp17_Stub, 'PortStart',
@@ -227,7 +227,7 @@ def start_client_port():
     if err.e_code != 0:
         die('Error starting client test cases.')
 
-    print 'Clients started successfully!\n'
+    print( 'Clients started successfully!\n')
 
 def start_server_port():
     err = warp17_method_call(warp17_host, warp17_port, Warp17_Stub, 'PortStart',
@@ -235,7 +235,7 @@ def start_server_port():
     if err.e_code != 0:
         die('Error starting server test cases.')
 
-    print 'Servers started successfully!\n'
+    print( 'Servers started successfully!\n')
 
 def check_stats():
     # Just check client stats a couple of times (once a second and stop
@@ -248,7 +248,7 @@ def check_stats():
         if client_result.tsr_error.e_code != 0:
             die('Error fetching client test case stats.')
 
-        print 'Client test case state: ' + str(client_result.tsr_state) + '\n'
+        print( 'Client test case state: ' + str(client_result.tsr_state) + '\n')
         print 'Global stats:'
         print client_result.tsr_stats.tcs_client
         print 'Rate stats:'

@@ -93,7 +93,7 @@ typedef struct arp_statistics_s {
  * Currently ARP table size is small, as we only need to store the default
  * gw's ARP entry and our own ARPs.
  */
-#define TPG_ARP_PORT_TABLE_SIZE    24
+#define TPG_ARP_PORT_TABLE_SIZE    256
 
 #define TPG_ARP_UINT64_MAC_MASK    0x0000FFFFFFFFFFFF
 #define TPG_ARP_UINT64_FLAGS_MASK  (~TPG_ARP_UINT64_MAC_MASK)

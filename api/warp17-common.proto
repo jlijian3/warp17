@@ -69,7 +69,7 @@ enum Constants {
     option (warp17_constants) = true;
 
     TPG_TEST_MAX_ENTRIES = 16;
-    TPG_TEST_MAX_L3_INTF = 10;
+    TPG_TEST_MAX_L3_INTF = 100;
 }
 
 extend google.protobuf.FieldOptions {
