@@ -206,6 +206,8 @@ static int http_write_str(struct rte_mbuf *mbuf, const char *fmt, ...)
     return 0;
 }
 
+static uint64_t g_uid = 1;
+
 /*****************************************************************************
  * http_build_req_pkt()
  *  NOTES:
@@ -237,7 +239,7 @@ static int http_build_req_pkt(struct rte_mbuf **mbuf, const char *method,
     mbuf_p = *mbuf;
 
     /* Write the obj-name: "METHOD OBJ-NAME HTTP/1.1" */
-    err = http_write_str(mbuf_p, "%s %s HTTP/1.1\r\n", method, obj_name);
+    err = http_write_str(mbuf_p, "%s %s/?ucid=%x HTTP/1.1\r\n", method, obj_name, g_uid);
     if (err)
         goto error;
 
